@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS grupo_armado(
+    codigoG INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nomeGrupo VARCHAR(30) NOT NULL,
+    numBaixasG INT UNSIGNED,
+    PRIMARY KEY(codigoG)
+)
+
