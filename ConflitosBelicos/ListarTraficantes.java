@@ -52,15 +52,9 @@ public class ListarTraficantes extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					try {
-						/* Connection con;
-						String userName = "root";
-						String password = "";
-						String url = "jdbc:mysql://127.0.0.1/bd_teste?useTimezone=true&serverTimezone=UTC"; */
+						
 						Connection con = FabricaConexao.getConexao();
-						
-						//Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-						//con = DriverManager.getConnection(url, userName, password);
-						
+				
 						Statement st = con.createStatement();
 					
 						ResultSet rs = st.executeQuery("SELECT nomeTraf as Traficante, nomeArma as Fornece, nomeGrupo as Grupo_Armado "
