@@ -108,20 +108,24 @@ public class CadConflito extends JFrame {
 						
 						switch(txtTipoConf.getText()) {
 							case "Econômico":
-//								st.executeUpdate("INSERT INTO confEcon (codConflito, matPrima)"
-//										+ " VALUES ("+txtCod.getText()+",'"+ txtMat.getText()+"'");
+								String mat = JOptionPane.showInputDialog("Insira a Matéria Prima");
+								st.executeUpdate("INSERT INTO confEcon (codConflito, matPrima)"
+										+ " VALUES ("+txtCod.getText()+",'"+ mat +"')");
 								break;
 							case "Territorial":
-//								st.executeUpdate("INSERT INTO territorial (codConflito, regiao)"
-//										+ " VALUES ("+txtCod.getText()+",'"+ txtRegiao.getText()+"'");
+								String regiao = JOptionPane.showInputDialog("Insira a Região disputada");
+								st.executeUpdate("INSERT INTO territorial (codConflito, regiao)"
+										+ " VALUES ("+txtCod.getText()+",'"+ regiao+"')");
 								break;
 							case "Religioso":
-//								st.executeUpdate("INSERT INTO confRelig (codConflito,religiao)"
-//										+ " VALUES ("+txtCod.getText()+",'"+txtReligiao.getText()+"'");
+								String religiao = JOptionPane.showInputDialog("Insira a Religião causadora do conflito");
+								st.executeUpdate("INSERT INTO confRelig (codConflito,religiao)"
+										+ " VALUES ("+txtCod.getText()+",'"+religiao+"')");
 								break;
 							case "Racial":
-//								st.executeUpdate("INSERT INTO confEtnia (codConflito, etnia)"
-//										+ " VALUES ("+txtCod.getText()+",'"+txtEtnia.getText()+"'");
+								String etnia = JOptionPane.showInputDialog("Insira a Etnia causadora do conflito");
+								st.executeUpdate("INSERT INTO confEtnia (codConflito, etnia)"
+										+ " VALUES ("+txtCod.getText()+",'"+etnia+"')");
 								break;
 						}
 						
@@ -134,6 +138,7 @@ public class CadConflito extends JFrame {
 						txtTipoConf.setText("");
 						txtNFeridos.setText("");
 						txtNMortos.setText("");
+						txtPais.setText("");
 					}
 					catch(Exception event){
 						JOptionPane.showMessageDialog(null, "Conexão não estabelecida"+event, ""+event, JOptionPane.ERROR_MESSAGE);
