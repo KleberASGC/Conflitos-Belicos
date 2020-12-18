@@ -23,6 +23,7 @@ public class CadConflito extends JFrame {
 	private JTextField txtNFeridos;
 	private JLabel lblNMortos;
 	private JTextField txtNMortos;
+	private JTextField txtPais;
 
 	/**
 	 * Launch the application.
@@ -97,18 +98,32 @@ public class CadConflito extends JFrame {
 		         opcao = JOptionPane.showOptionDialog(null,"Deseja incluir esse registro?","Confirmação de Inclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, BtSair, BtSair[0]);  // 
 		        if(opcao == JOptionPane.YES_OPTION) {
 					try {
-						/* Connection con;
-						String userName = "root";
-						String password = "";
-						String url = "jdbc:mysql://127.0.0.1/bd_teste?useTimezone=true&serverTimezone=UTC"; */
 						Connection con = FabricaConexao.getConexao();
-						
-						//Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-						//con = DriverManager.getConnection(url, userName, password);
 						Statement st = con.createStatement();
 						st.executeUpdate("INSERT INTO conflito (codConflito, nome, tipoConf, numFeridos, numMortos)"
 								+ " VALUES ('"+txtCod.getText()+"','"+txtNome.getText()+"','"+txtTipoConf.getText()+
 								"','"+txtNFeridos.getText()+"','"+txtNMortos.getText()+"')");
+						st.executeUpdate("INSERT INTO conflitoPais (codConflito, pais) "
+								+ "VALUES (" + txtCod.getText() + ",'" + txtPais.getText() + "')");				
+						
+						switch(txtTipoConf.getText()) {
+							case "Econômico":
+//								st.executeUpdate("INSERT INTO confEcon (codConflito, matPrima)"
+//										+ " VALUES ("+txtCod.getText()+",'"+ txtMat.getText()+"'");
+								break;
+							case "Territorial":
+//								st.executeUpdate("INSERT INTO territorial (codConflito, regiao)"
+//										+ " VALUES ("+txtCod.getText()+",'"+ txtRegiao.getText()+"'");
+								break;
+							case "Religioso":
+//								st.executeUpdate("INSERT INTO confRelig (codConflito,religiao)"
+//										+ " VALUES ("+txtCod.getText()+",'"+txtReligiao.getText()+"'");
+								break;
+							case "Racial":
+//								st.executeUpdate("INSERT INTO confEtnia (codConflito, etnia)"
+//										+ " VALUES ("+txtCod.getText()+",'"+txtEtnia.getText()+"'");
+								break;
+						}
 						
 						st.close();
 						con.close();
@@ -137,5 +152,14 @@ public class CadConflito extends JFrame {
 		txtNMortos.setColumns(10);
 		txtNMortos.setBounds(238, 152, 86, 20);
 		contentPane.add(txtNMortos);
+		
+		txtPais = new JTextField();
+		txtPais.setColumns(10);
+		txtPais.setBounds(238, 183, 86, 20);
+		contentPane.add(txtPais);
+		
+		JLabel lblPasEmQue = new JLabel("Pa\u00EDs em que ocorre/ocorreu:");
+		lblPasEmQue.setBounds(10, 186, 201, 14);
+		contentPane.add(lblPasEmQue);
 	}
 }
