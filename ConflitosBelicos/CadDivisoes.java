@@ -10,12 +10,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class CadDivisoes {
 
-	private JFrame frmCadastroDivises;
+	JFrame frmCadastroDivises;
 	private JTextField numTanques;
 	private JTextField numBarcos;
 	private JTextField numBaixas;
@@ -49,7 +50,7 @@ public class CadDivisoes {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	protected void initialize() {
 		frmCadastroDivises = new JFrame();
 		frmCadastroDivises.setTitle("Divis\u00F5es");
 		frmCadastroDivises.setBounds(100, 100, 450, 300);
@@ -118,13 +119,7 @@ public class CadDivisoes {
 		         opcao = JOptionPane.showOptionDialog(null,"Deseja incluir esse registro?","Confirmação de Inclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, BtSair, BtSair[0]);
 		           if(opcao == JOptionPane.YES_OPTION) { 
 					try {
-						/* Connection con;
-						String userName = "root";
-						String password = "";
-						String url = "jdbc:mysql://127.0.0.1/bd_teste?useTimezone=true&serverTimezone=UTC";
 						
-						Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-						con = DriverManager.getConnection(url, userName, password); */
 						Connection con = FabricaConexao.getConexao();
 						Statement st = con.createStatement();
 						st.executeUpdate("INSERT INTO divisao "
@@ -132,6 +127,18 @@ public class CadDivisoes {
 								+ "VALUES ("+numDiv.getText()+","+numCod.getText()+"," 
 								+ numBaixas.getText()+"," + numBarcos.getText()+"," 
 								+ numTanques.getText() + "," + numHomens.getText() + "," + numAvioes.getText()+")");
+						
+						ResultSet rs = st.executeQuery("SELECT codigo_Chefe FROM chefe_militar cm "
+								+ "INNER JOIN divisao d "
+								+ "WHERE cm.codigoG = " + numCod.getText());
+						int cm = 0;
+						while(rs.next()) {
+							cm = rs.getInt(1);
+						}
+						st.executeUpdate("INSERT INTO dirige "
+								+ "(cm_codigo,di_nrodiv) "
+								+ "VALUES ("+ cm +"," 
+								+numDiv.getText()+")");
 						
 						st.close();
 						con.close();
