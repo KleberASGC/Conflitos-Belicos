@@ -52,15 +52,7 @@ public class ListarConflitos extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					try {
-						/* Connection con;
-						String userName = "root";
-						String password = "";
-						String url = "jdbc:mysql://127.0.0.1/bd_teste?useTimezone=true&serverTimezone=UTC"; */
 						Connection con = FabricaConexao.getConexao();
-						
-						//Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-						//con = DriverManager.getConnection(url, userName, password);
-						
 						Statement st = con.createStatement();
 					
 						ResultSet rs = st.executeQuery("SELECT nome as Conflito, numMortos as Mortos "
@@ -80,7 +72,6 @@ public class ListarConflitos extends JFrame {
 							if(i==4) break;
 						} 
 						JOptionPane.showMessageDialog(null, print);
-						//txtArma.setText(rs.getString("nome_traf"));
 					
 						
 						st.close();

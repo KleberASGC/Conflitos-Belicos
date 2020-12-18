@@ -128,17 +128,6 @@ public class CadDivisoes {
 								+ numBaixas.getText()+"," + numBarcos.getText()+"," 
 								+ numTanques.getText() + "," + numHomens.getText() + "," + numAvioes.getText()+")");
 						
-						ResultSet rs = st.executeQuery("SELECT codigo_Chefe FROM chefe_militar cm "
-								+ "INNER JOIN divisao d "
-								+ "WHERE cm.codigoG = " + numCod.getText());
-						int cm = 0;
-						while(rs.next()) {
-							cm = rs.getInt(1);
-						}
-						st.executeUpdate("INSERT INTO dirige "
-								+ "(cm_codigo,di_nrodiv) "
-								+ "VALUES ("+ cm +"," 
-								+numDiv.getText()+")");
 						
 						st.close();
 						con.close();
