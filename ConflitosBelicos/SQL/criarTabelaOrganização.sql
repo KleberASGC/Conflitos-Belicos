@@ -7,3 +7,4 @@ CREATE TABLE IF NOT EXISTS organizacaoM(
     tipo VARCHAR(30) NOT NULL,
     PRIMARY KEY(codigoORG)
 )
+

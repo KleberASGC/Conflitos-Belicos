@@ -4,3 +4,4 @@ CREATE TABLE IF NOT EXISTS confEtnia(
     PRIMARY KEY(codConflito, etnia),
     FOREIGN KEY (codConflito) REFERENCES conflito(codConflito)
 )
+

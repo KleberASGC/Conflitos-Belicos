@@ -19,9 +19,7 @@ public class Menu {
 	private JFrame frmMenu;
 	private JMenuItem itemDivisoes;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,16 +33,12 @@ public class Menu {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+	
 	public Menu() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frmMenu = new JFrame();
 		frmMenu.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -146,6 +140,28 @@ public class Menu {
 		});
 		mnListar.add(itemListarTraficantes);
 		
+		JMenuItem itemListarGruposArmados = new JMenuItem("Grupos Armados");
+		itemListarGruposArmados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  
+				ListarGrupos frame = new ListarGrupos();
+				frame.setVisible(true);
+			}
+		});
+		mnListar.add(itemListarGruposArmados);
+		
+		JMenuItem itemListarPais = new JMenuItem("Pa\u00EDs e N\u00FAmero de Conflitos");
+		itemListarPais.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  
+				ListarPaises frame = new ListarPaises();
+				frame.setVisible(true);
+			}
+		});
+		mnListar.add(itemListarPais);
+		
+		
+		
 		JMenu mcGráficos = new JMenu("Gr\u00E1ficos");
 		mnNewMenu.add(mcGráficos);
 		
@@ -155,7 +171,7 @@ public class Menu {
 				try {
 					new JanelaConflitos().setVisible(true);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 				
@@ -165,5 +181,4 @@ public class Menu {
 		mcGráficos.add(itemGraficoConflito);
 		frmMenu.getContentPane().setLayout(null);
 	}
-
 }

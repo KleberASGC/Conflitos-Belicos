@@ -4,3 +4,6 @@ CREATE TABLE IF NOT EXISTS confEcon(
     PRIMARY KEY(codConflito, matPrima),
     FOREIGN KEY (codConflito) REFERENCES conflito(codConflito)
 )
+
+
+

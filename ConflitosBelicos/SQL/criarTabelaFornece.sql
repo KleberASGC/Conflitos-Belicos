@@ -13,4 +13,3 @@ CREATE TABLE IF NOT EXISTS fornece(
 
 
 
---fornece f INNER JOIN grupo_armado ga on f.nomeArma = 'M200 intervention' OR f.nomeArma = 'Barret M82'

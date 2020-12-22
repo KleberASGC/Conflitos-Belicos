@@ -5,3 +5,4 @@ CREATE TABLE IF NOT EXISTS territorial(
     PRIMARY KEY (codConflito, regiao),
     FOREIGN KEY (codConflito) REFERENCES conflito (codConflito)
 )
+

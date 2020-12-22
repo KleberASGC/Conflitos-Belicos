@@ -5,4 +5,3 @@ CREATE TABLE IF NOT EXISTS lider_politico(
     PRIMARY KEY(nomeL,codigoG),
     FOREIGN KEY(codigoG) REFERENCES grupo_armado(codigoG)
 )
-

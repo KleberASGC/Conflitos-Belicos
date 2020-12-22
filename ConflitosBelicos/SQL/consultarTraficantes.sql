@@ -1,4 +1,3 @@
-SELECT * FROM fornece WHERE nomeArma = 'M200 Intervention' OR nomeArma = 'Barret M82'
 
 SELECT 
     nomeTraf as Traficante,

@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class ListarPaises extends JFrame {
 
@@ -44,7 +45,7 @@ public class ListarPaises extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnListarPaises = new JButton("Listar Pa\u00EDses com maior n\u00FAmero de conflitos religiosos");
+		JButton btnListarPaises = new JButton("Listar");
 		btnListarPaises.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -83,8 +84,16 @@ public class ListarPaises extends JFrame {
 				}
 			}
 		});
-		btnListarPaises.setBounds(70, 41, 305, 152);
+		btnListarPaises.setBounds(143, 194, 141, 56);
 		contentPane.add(btnListarPaises);
+		
+		JLabel lblViListarO = new JLabel("Listar o pa\u00EDs e n\u00FAmero de conflitos ");
+		lblViListarO.setBounds(10, 77, 641, 14);
+		contentPane.add(lblViListarO);
+		
+		JLabel lblComMaiorNmero = new JLabel("com maior n\u00FAmero de conflitos religiosos");
+		lblComMaiorNmero.setBounds(10, 102, 641, 14);
+		contentPane.add(lblComMaiorNmero);
 	}
 
 }

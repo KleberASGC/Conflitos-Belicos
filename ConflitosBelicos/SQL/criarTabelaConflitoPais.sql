@@ -5,3 +5,4 @@ CREATE TABLE IF NOT EXISTS conflitoPais (
     PRIMARY KEY (codConflito, pais),
     FOREIGN KEY (codConflito) REFERENCES conflito (codConflito)
 )
+

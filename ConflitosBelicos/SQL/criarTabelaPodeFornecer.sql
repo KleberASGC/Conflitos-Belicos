@@ -5,4 +5,3 @@ CREATE TABLE IF NOT EXISTS podeFornecer(
     FOREIGN KEY (nomeArma) REFERENCES tipoArma (nomeArma)
 )
 
-INSERT INTO 

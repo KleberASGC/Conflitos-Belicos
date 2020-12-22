@@ -5,5 +5,8 @@ CREATE TABLE IF NOT EXISTS tipoArma (
 )
 
 INSERT INTO tipoArma (nomeArma,indicador)
-VALUES ('Barret M82', '82'),
-        ('M200 Intervention','200')
+VALUES ('M4A1', 400),
+        ('M416', 360),
+        ('AX-50', 1200),
+        ('Origin 12', 500),
+        ('UZI', 250)
