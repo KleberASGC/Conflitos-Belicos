@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class ListarGrupos extends JFrame {
 
@@ -45,9 +46,9 @@ public class ListarGrupos extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
-		JButton btnListarGrupos = new JButton("New button");
+		JButton btnListarGrupos = new JButton("Listar");
+		btnListarGrupos.setBounds(168, 227, 89, 23);
 		btnListarGrupos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {		
@@ -83,8 +84,15 @@ public class ListarGrupos extends JFrame {
 				}
 			}
 		});
-		btnListarGrupos.setBounds(168, 227, 89, 23);
+		contentPane.setLayout(null);
 		contentPane.add(btnListarGrupos);
+		
+		JLabel lblVListarOs = new JLabel("Listar os 5 maiores grupos armados com maior n\u00FAmero");
+		lblVListarOs.setBounds(10, 73, 641, 14);
+		contentPane.add(lblVListarOs);
+		
+		JLabel lblDeArmasFornecidos = new JLabel(" de armas fornecidos");
+		lblDeArmasFornecidos.setBounds(10, 96, 641, 14);
+		contentPane.add(lblDeArmasFornecidos);
 	}
-
 }

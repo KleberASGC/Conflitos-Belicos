@@ -74,7 +74,7 @@ public class ListarTraficantes extends JFrame {
 							print += f.getTraficante() + " ==> " + f.getArma() + " ==> " + f.getGrupo_armado() + "\n";
 						} 
 						JOptionPane.showMessageDialog(null, print);
-						//txtArma.setText(rs.getString("nome_traf"));
+						
 					
 						
 						st.close();

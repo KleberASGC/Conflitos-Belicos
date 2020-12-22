@@ -23,6 +23,8 @@ public class CadGrupoArmado extends JFrame {
 	private JTextField txtCodigoG;
 	private JLabel lblNmeroDeBaixas;
 	private JTextField numBaixas;
+	private JTextField textNroDiv;
+	private JLabel lblNmeroDaDiviso;
 
 	/**
 	 * Launch the application.
@@ -45,7 +47,6 @@ public class CadGrupoArmado extends JFrame {
 	 */
 	public CadGrupoArmado() {
 		setTitle("Grupo Armado");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,7 +72,7 @@ public class CadGrupoArmado extends JFrame {
 		contentPane.add(txtCodigoG);
 		
 		JButton button = new JButton("Inserir");
-		button.setBounds(10, 125, 89, 23);
+		button.setBounds(10, 140, 89, 23);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opcao;
@@ -88,8 +89,8 @@ public class CadGrupoArmado extends JFrame {
 						//Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 						//con = DriverManager.getConnection(url, userName, password);
 						Statement st = con.createStatement();
-						st.executeUpdate("INSERT INTO grupo_armado (codigoG, nomeGrupo,numBaixasG) VALUES"
-								+ " ("+txtCodigoG.getText()+",'"+txtNomeGrupo.getText()+"'," + numBaixas.getText() + ")");
+						st.executeUpdate("INSERT INTO grupo_armado (codigoG, nomeGrupo,numBaixasG,nroDivisao) VALUES"
+								+ " ("+txtCodigoG.getText()+",'"+txtNomeGrupo.getText()+"'," + numBaixas.getText() + "," + textNroDiv.getText() + ")");
 						
 						st.close();
 						con.close();
@@ -115,5 +116,14 @@ public class CadGrupoArmado extends JFrame {
 		numBaixas.setColumns(10);
 		numBaixas.setBounds(338, 77, 86, 20);
 		contentPane.add(numBaixas);
+		
+		textNroDiv = new JTextField();
+		textNroDiv.setColumns(10);
+		textNroDiv.setBounds(338, 108, 86, 20);
+		contentPane.add(textNroDiv);
+		
+		lblNmeroDaDiviso = new JLabel("N\u00FAmero da Divis\u00E3o: ");
+		lblNmeroDaDiviso.setBounds(10, 105, 112, 14);
+		contentPane.add(lblNmeroDaDiviso);
 	}
 }

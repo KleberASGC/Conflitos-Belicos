@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class ListarOrganizacoesM extends JFrame {
 
@@ -44,7 +45,7 @@ public class ListarOrganizacoesM extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnListar = new JButton("New button");
+		JButton btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {		
@@ -84,5 +85,9 @@ public class ListarOrganizacoesM extends JFrame {
 		});
 		btnListar.setBounds(169, 227, 89, 23);
 		contentPane.add(btnListar);
+		
+		JLabel lblIvListarAs = new JLabel("Listar as 5 maiores organiza\u00E7\u00F5es em n\u00FAmero de media\u00E7\u00F5es");
+		lblIvListarAs.setBounds(10, 86, 641, 14);
+		contentPane.add(lblIvListarAs);
 	}
 }

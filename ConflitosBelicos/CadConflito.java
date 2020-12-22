@@ -46,7 +46,6 @@ public class CadConflito extends JFrame {
 	 */
 	public CadConflito() {
 		setTitle("Cadastro de Conflito");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -100,32 +99,35 @@ public class CadConflito extends JFrame {
 					try {
 						Connection con = FabricaConexao.getConexao();
 						Statement st = con.createStatement();
-						st.executeUpdate("INSERT INTO conflito (codConflito, nome, tipoConf, numFeridos, numMortos)"
+						st.executeUpdate("INSERT INTO conflito (codConflito, nome, tipoConf, numFeridos, numMortos,paisAfetado)"
 								+ " VALUES ('"+txtCod.getText()+"','"+txtNome.getText()+"','"+txtTipoConf.getText()+
-								"','"+txtNFeridos.getText()+"','"+txtNMortos.getText()+"')");
-						st.executeUpdate("INSERT INTO conflitoPais (codConflito, pais) "
-								+ "VALUES (" + txtCod.getText() + ",'" + txtPais.getText() + "')");				
+								"','"+txtNFeridos.getText()+"','"+txtNMortos.getText()+"','"+txtPais.getText() +"')");
 						
 						switch(txtTipoConf.getText()) {
 							case "Econômico":
 								String mat = JOptionPane.showInputDialog("Insira a Matéria Prima");
-								st.executeUpdate("INSERT INTO confEcon (codConflito, matPrima)"
-										+ " VALUES ("+txtCod.getText()+",'"+ mat +"')");
+								st.executeUpdate("UPDATE confEcon "
+										+ "SET matPrima = '" + mat + "' "
+										+ "WHERE codConflito = " + txtCod.getText());
 								break;
 							case "Territorial":
 								String regiao = JOptionPane.showInputDialog("Insira a Região disputada");
-								st.executeUpdate("INSERT INTO territorial (codConflito, regiao)"
-										+ " VALUES ("+txtCod.getText()+",'"+ regiao+"')");
+								st.executeUpdate("UPDATE territorial "
+										+ "SET regiao = '" + regiao + "' "
+										+ "WHERE codConflito = " + txtCod.getText());
+										
 								break;
 							case "Religioso":
 								String religiao = JOptionPane.showInputDialog("Insira a Religião causadora do conflito");
-								st.executeUpdate("INSERT INTO confRelig (codConflito,religiao)"
-										+ " VALUES ("+txtCod.getText()+",'"+religiao+"')");
+								st.executeUpdate("UPDATE confRelig "
+										+ "SET religiao = '" + religiao + "' "
+										+ "WHERE codConflito = " + txtCod.getText());
 								break;
 							case "Racial":
 								String etnia = JOptionPane.showInputDialog("Insira a Etnia causadora do conflito");
-								st.executeUpdate("INSERT INTO confEtnia (codConflito, etnia)"
-										+ " VALUES ("+txtCod.getText()+",'"+etnia+"')");
+								st.executeUpdate("UPDATE confEtnia "
+										+ "SET etnia = '" + etnia + "' "
+										+ "WHERE codConflito = " + txtCod.getText());
 								break;
 						}
 						

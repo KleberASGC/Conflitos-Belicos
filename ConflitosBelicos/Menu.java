@@ -7,6 +7,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
@@ -151,7 +152,12 @@ public class Menu {
 		JMenuItem itemGraficoConflito = new JMenuItem("Conflito");
 		itemGraficoConflito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				  
+				try {
+					new JanelaConflitos().setVisible(true);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});

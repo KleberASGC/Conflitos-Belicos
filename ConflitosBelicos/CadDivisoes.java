@@ -25,6 +25,8 @@ public class CadDivisoes {
 	private JTextField numAvioes;
 	private JLabel lblCdigoDaDiviso;
 	private JTextField numCod;
+	private JLabel lblCdigoDoChefe;
+	private JTextField textCodChefe;
 
 	
 	public static void main(String[] args) {
@@ -54,7 +56,6 @@ public class CadDivisoes {
 		frmCadastroDivises = new JFrame();
 		frmCadastroDivises.setTitle("Divis\u00F5es");
 		frmCadastroDivises.setBounds(100, 100, 450, 300);
-		frmCadastroDivises.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastroDivises.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("N\u00FAmero da Divis\u00E3o:");
@@ -123,10 +124,10 @@ public class CadDivisoes {
 						Connection con = FabricaConexao.getConexao();
 						Statement st = con.createStatement();
 						st.executeUpdate("INSERT INTO divisao "
-								+ "(nroDivisao,codigoG,numBaixasD,barcos,tanques,homens,avioes) "
+								+ "(nroDivisao,codigoG,numBaixasD,barcos,tanques,homens,avioes,codigo_Chefe) "
 								+ "VALUES ("+numDiv.getText()+","+numCod.getText()+"," 
 								+ numBaixas.getText()+"," + numBarcos.getText()+"," 
-								+ numTanques.getText() + "," + numHomens.getText() + "," + numAvioes.getText()+")");
+								+ numTanques.getText() + "," + numHomens.getText() + "," + numAvioes.getText()+","+textCodChefe.getText()+")");
 						
 						
 						st.close();
@@ -158,5 +159,14 @@ public class CadDivisoes {
 		numCod.setColumns(10);
 		numCod.setBounds(338, 40, 86, 20);
 		frmCadastroDivises.getContentPane().add(numCod);
+		
+		lblCdigoDoChefe = new JLabel("C\u00F3digo do Chefe Militar:");
+		lblCdigoDoChefe.setBounds(238, 71, 186, 29);
+		frmCadastroDivises.getContentPane().add(lblCdigoDoChefe);
+		
+		textCodChefe = new JTextField();
+		textCodChefe.setColumns(10);
+		textCodChefe.setBounds(338, 95, 86, 20);
+		frmCadastroDivises.getContentPane().add(textCodChefe);
 	}
 }
